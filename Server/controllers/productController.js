@@ -29,6 +29,7 @@ export const createProduct = catchAsyncErrors(async (req, res, next) => {
 
     req.body.images = imagesLinks;
     req.body.user = req.user.id;
+    req.body.category = req.body.category.toLowerCase();
 
     const product = new Product(req.body);
     await product.save();
