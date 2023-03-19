@@ -9,6 +9,9 @@
 /.vscode
 /.prettierrc
 
+# env
+/Server/config/config.env
+
 # testing
 /coverage
 
