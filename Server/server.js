@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import cloudinary from 'cloudinary';
+import dotenv from 'dotenv';
 
 import app from './app.js';
 import connectDatabase from './config/database.js';
@@ -13,7 +13,9 @@ process.on('uncaughtException', (err) => {
 });
 
 // config
-dotenv.config({ path: 'Server/config/config.env' });
+if (process.env.NODE_ENV !== 'PRODUCTION') {
+    dotenv.config({ path: 'Server/config/config.env' });
+}
 
 mongoose.set('strictQuery', false);
 

@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import path from 'path';
+import appRoot from 'app-root-path';
 
 import product from './routes/productRoute.js';
 import user from './routes/userRoute.js';
@@ -11,7 +13,9 @@ import payment from './routes/paymentRoute.js';
 import { errorMiddleware } from './middleware/error.js';
 
 // config
-dotenv.config({ path: 'Server/config/config.env' });
+if (process.env.NODE_ENV !== 'PRODUCTION') {
+    dotenv.config({ path: 'Server/config/config.env' });
+}
 
 const app = express();
 app.use(cookieParser());
@@ -24,6 +28,13 @@ app.use('/api/v1', product);
 app.use('/api/v1', user);
 app.use('/api/v1', order);
 app.use('/api/v1', payment);
+
+// deploy
+app.use(express.static(path.join(appRoot.path, 'client/build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(appRoot.path, 'client/build/index.html'));
+});
 
 // middleware
 app.use(errorMiddleware);

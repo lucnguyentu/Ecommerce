@@ -7,11 +7,13 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "nodemon Server/server.js",
-        "dev": "nodemon Server/server.js"
+        "dev": "nodemon Server/server.js",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix client && npm run build --prefix client"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "app-root-path": "^3.1.0",
         "bcrypt": "^5.1.0",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.20.1",
