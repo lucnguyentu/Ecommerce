@@ -34,7 +34,7 @@ export default class ApiFeatures {
         // console.log(queryStr); => {"category":"laptop","price":{"gt":"1200"}}
 
         // Regular expression normally was placed in / .../
-        // \bWORD or WORD\b => find "WORD" at begin or end "WORD IS NOTHING" OR "NOTHING IS WORD"
+        // \bWORD or WORD\b => find "WORD" at begin or end, "WORD IS NOTHING" OR "NOTHING IS WORD"
         // flag g: Global search. ex: price[gt]: 1200 => price: {gt: 1200}
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
         // console.log(queryStr); => {"category":"laptop","price":{"$gt":"1200"}}

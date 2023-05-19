@@ -36,6 +36,7 @@ export const loginUser = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler('Please Enter Email & Password', 400));
     }
 
+    // with method findOne, MongoDB usually not return fields like password, so we have to .select('+password')
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
         return next(new ErrorHandler('Invalid email or password', 401));
