@@ -29,7 +29,7 @@ const NewProduct = () => {
     const [images, setImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([]);
 
-    const categories = ['Laptop', 'Footwear', 'Bottom', 'Tops', 'Attire', 'Headphone', 'SmartPhones'];
+    const categories = ['In Ear', 'On Ear', 'Over Ear', 'Bluetooth', 'Bluetooth True Wireless', 'Sport Ear', 'Noise Canceling'];
 
     useEffect(() => {
         if (error) {

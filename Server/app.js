@@ -24,17 +24,16 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(fileUpload());
 
-app.use('/api/v1', product);
 app.use('/api/v1', user);
+app.use('/api/v1', product);
 app.use('/api/v1', order);
 app.use('/api/v1', payment);
-
 // deploy
-app.use(express.static(path.join(appRoot.path, 'client/build')));
+// app.use(express.static(path.join(appRoot.path, 'client/build')));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(appRoot.path, 'client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(appRoot.path, 'client/build/index.html'));
+// });
 
 // middleware
 app.use(errorMiddleware);
